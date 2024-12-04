@@ -1,0 +1,126 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace; /* Monospace for command-line feel */
+    background-color: #ffffff; /* Clean white background */
+    color: #0b3d0b; /* Hacker green for text */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #0b3d0b; /* Same hacker green */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(11, 61, 11, 0.8); /* Glow effect */
+    border-bottom: 2px solid #0b3d0b; /* Underline divider */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Container for Soldiers */
+#soldier-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between grid items */
+    max-width: 1200px; /* Container width */
+    width: 100%;
+    padding: 10px;
+}
+
+/* Soldier Cards */
+.soldier {
+    background: #f4f4f4; /* Slight off-white for contrast */
+    border: 1px solid #0b3d0b;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(11, 61, 11, 0.2); /* Subtle glow inside */
+    position: relative;
+    text-align: left; /* Align text to the left */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    font-size: 0.95rem;
+}
+
+.soldier:hover {
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0 8px 20px rgba(11, 61, 11, 0.5), inset 0 0 15px rgba(11, 61, 11, 0.3); /* Stronger glow */
+}
+
+.soldier h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #0b3d0b; /* Green headings */
+}
+
+.soldier p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #1f2833;
+}
+
+.soldier span {
+    color: #0b3d0b; /* Highlight text in green */
+    font-weight: bold;
+}
+
+.terminate-button {
+    background-color: #ff4d4d; /* Command red for terminate */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+.terminate-button:hover {
+    background-color: #ff1a1a; /* Darker red on hover */
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.8); /* Glow effect */
+}
+
+/* Navigation Buttons */
+.nav-button {
+    background-color: #0b3d0b; /* Command-line green */
+    color: white;
+    padding: 12px 24px;
+    border: 2px solid #0b3d0b;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.nav-button:hover {
+    background-color: white;
+    color: #0b3d0b; /* Invert colors on hover */
+    transform: scale(1.05); /* Slight zoom */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #soldier-container {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    #soldier-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+    }
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soldier Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff; /* Clean white background */
+            color: #1f2833;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #45a29e;
+            text-transform: uppercase;
+        }
+
+        #soldier-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .soldier {
+            background: linear-gradient(145deg, #f0f0f0, #e8e8e8); /* Light futuristic gradient */
+            border: 1px solid #c5c6c7;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), inset 0 0 10px #c5c6c7;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            transition: 0.3s ease-in-out;
+        }
+
+        .soldier:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), inset 0 0 15px #45a29e;
+        }
+
+        .soldier h3 {
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #1f2833;
+            font-size: 1.2rem;
+        }
+
+        .soldier p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
+
+        .terminate-button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .terminate-button:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+     <a href="index.html" class="nav-button">Go to Vitals Tracker</a>
+    <h1>Soldier Management</h1>
+    <div id="soldier-container">
+        <!-- Soldier management content from the previous code -->
+    </div>
+    <script src="script.js"></script>
+
+    <h1>Soldier Management</h1>
+    <div id="soldier-container"></div>
+
+    <script>
+        // Soldiers' Data
+        const soldiers = [
+            { name: "TK-421", age: 30, suspicion: 2 },
+            { name: "FN-2187", age: 28, suspicion: 3 },
+            { name: "CT-7567", age: 32, suspicion: 1 },
+            { name: "RC-1138", age: 26, suspicion: 4 },
+            { name: "CC-2224", age: 35, suspicion: 5 },
+            { name: "LX-6543", age: 29, suspicion: 2 },
+            { name: "RX-7812", age: 31, suspicion: 3 },
+            { name: "DK-9901", age: 27, suspicion: 1 },
+            { name: "TX-3478", age: 34, suspicion: 4 },
+            { name: "VX-9823", age: 30, suspicion: 2 },
+            { name: "YT-4412", age: 28, suspicion: 5 },
+            { name: "GR-7719", age: 25, suspicion: 3 }
+        ];
+
+        const container = document.getElementById("soldier-container");
+
+        // Generate Soldier Cards
+        soldiers.forEach((soldier, index) => {
+            const soldierDiv = document.createElement("div");
+            soldierDiv.classList.add("soldier");
+
+            soldierDiv.innerHTML = `
+                <h3>Soldier ${index + 1}</h3>
+                <p><strong>Name:</strong> ${soldier.name}</p>
+                <p><strong>Age:</strong> ${soldier.age}</p>
+                <p><strong>Suspicion Level:</strong> ${soldier.suspicion}</p>
+                <button class="terminate-button" onclick="terminateSoldier(${index})">Terminate</button>
+            `;
+
+            container.appendChild(soldierDiv);
+        });
+
+        // Terminate Soldier Function
+        function terminateSoldier(index) {
+            const soldierDivs = document.querySelectorAll(".soldier");
+            const soldier = soldiers[index];
+            alert(`Soldier ${soldier.name} has been terminated.`);
+            soldierDivs[index].style.display = "none"; // Hide the soldier card
+        }
+    </script>
+</body>
+</html>
